@@ -1,22 +1,28 @@
 package shop;
 
 import behaviour.ISell;
+import people.Customer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Shop {
     private String shopName;
     private ArrayList<ISell> stockList;
     private HashMap<ISell, Double> profitList;
     private double totalPotentialProfit;
+    private ArrayList<Customer> registeredCustomers;
+    private double till;
 
 
-    public Shop(String shopName, ArrayList<ISell> stockList) {
+    public Shop(String shopName, ArrayList<ISell> stockList, double till) {
         this.shopName = shopName;
         this.stockList = stockList;
         this.profitList = new HashMap<ISell, Double>();
         this.totalPotentialProfit = 0;
+        this.registeredCustomers = new ArrayList<Customer>();
+        this.till = till;
 
     }
 
@@ -24,6 +30,7 @@ public class Shop {
     public void addStock(ISell itemToAdd){
         this.stockList.add(itemToAdd);
         this.profitList.put(itemToAdd, itemToAdd.calcMarkUp());
+        this.till -= itemToAdd.getBoughtFor();
 
     }
 
@@ -67,5 +74,21 @@ public class Shop {
         }
         this.totalPotentialProfit = sum;
         return this.totalPotentialProfit;
+    }
+
+    public String generateAccNo(){
+        Random rnd = new Random();
+        int number = rnd.nextInt(999);
+        return String.format("%06d", number);
+    }
+
+    public void registerCustomer(Customer customer){
+        this.registeredCustomers.add(customer);
+
+        customer.setAccNo(this.generateAccNo());
+    }
+
+    public double getTill() {
+        return this.till;
     }
 }

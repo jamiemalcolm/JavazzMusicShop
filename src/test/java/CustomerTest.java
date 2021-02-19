@@ -7,10 +7,9 @@ import shop.Shop;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
-public class ShopTest {
-
+public class CustomerTest {
     Shop shop;
     DrumKit drumKit1;
     DrumKit drumKit2;
@@ -65,29 +64,19 @@ public class ShopTest {
     }
 
     @Test
-    public void shopHasStockList(){
-        assertEquals(10, shop.getStockListLength());
+    public void customerDoesNotHaveAccNo(){
+        assertEquals("", customer.getAccNo());
     }
 
     @Test
-    public void shopHasProfitMap(){
-        assertEquals(10, shop.getProfitListLength());
+    public void customerHasAccNoAfterRegister(){
+        customer.signUp(shop);
+        assertNotEquals("", customer.getAccNo());
     }
 
     @Test
-    public void shopCanCalculateProfitPotential(){
-        assertEquals(639.25 ,shop.getTotalPotentialProfit(), 0.01);
-    }
-
-    @Test
-    public void shopCanCalcProfitAfterAddedItem(){
-        shop.addStock(drumKit2);
-        assertEquals(789.25, shop.getTotalPotentialProfit(), 0.01);
-    }
-
-    @Test
-    public void checkMoneyInTill(){
-        assertEquals(8721.5, shop.getTill(), 0.01);
-
+    public void customerCanBuyItem(){
+        customer.buy(drumKit1);
+        assertEquals(500, customer.getWallet(), 0.01);
     }
 }
