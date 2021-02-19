@@ -32,4 +32,12 @@ public abstract class Instrument implements IPlay, ISell {
     public boolean isAcoustic() {
         return isAcoustic;
     }
+
+    public String play() {
+        return this.getSound();
+    }
+
+    public double calcMarkUp() {
+        return this.getSellFor() - this.getBoughtFor();
+    }
 }

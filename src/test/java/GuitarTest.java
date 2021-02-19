@@ -19,7 +19,7 @@ public class GuitarTest {
 
     @Test
     public void guitarHasSellFor(){
-        assertEquals(187.50, guitar.calcMarkUp(), 0.01);
+        assertEquals(62.50, guitar.calcMarkUp(), 0.01);
     }
 
     @Test

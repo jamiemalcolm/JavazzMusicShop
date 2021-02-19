@@ -24,14 +24,6 @@ public class DrumKit extends Instrument{
         return numOfSymbols;
     }
 
-    public String play() {
-        return this.getSound();
-    }
-
-    public double calcMarkUp() {
-        return this.getSellFor();
-    }
-
     public InstrumentType getInstrumentType() {
         return instrumentType;
     }

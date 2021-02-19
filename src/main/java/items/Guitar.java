@@ -15,16 +15,7 @@ public class Guitar extends Instrument {
         this.instrumentType = InstrumentType.STRINGS;
     }
 
-    @Override
-    public double getSellFor() {
-        return super.getSellFor();
-    }
 
-    public String play() {
-        return this.getSound();
-    }
 
-    public double calcMarkUp() {
-        return getBoughtFor() * 1.5;
-    }
+
 }
