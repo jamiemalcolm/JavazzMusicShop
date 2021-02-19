@@ -3,7 +3,7 @@ package items;
 import behaviour.IPlay;
 import behaviour.ISell;
 
-public class Item implements ISell {
+public abstract class Item implements ISell {
     private double boughtFor;
     private double sellFor;
     private InstrumentType forType;

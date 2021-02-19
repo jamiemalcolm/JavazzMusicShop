@@ -8,6 +8,6 @@ public class Piano extends Instrument{
     public Piano(String sound, double boughtFor, boolean isAcoustic, String style) {
         super(sound, boughtFor, isAcoustic);
         Style = style;
-        this.instrumentType = InstrumentType.BRASS;
+        this.instrumentType = InstrumentType.KEYS;
     }
 }
