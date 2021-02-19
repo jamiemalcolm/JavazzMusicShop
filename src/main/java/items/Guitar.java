@@ -1,36 +1,30 @@
 package items;
 
 
+import behaviour.IPlay;
+import behaviour.ISell;
 
-public class Guitar {
+public class Guitar extends Instrument {
 
     private int numOfStrings;
-    private boolean isAcoustic;
     private InstrumentType instrumentType;
-    private String sound;
-    private double boughtFor;
-    private double sellFor;
 
-    public Guitar(double boughtFor, int numOfStrings, boolean isAcoustic, String sound){
-        this.instrumentType = InstrumentType.STRINGS;
-        this.boughtFor = boughtFor;
+    public Guitar(String sound, double boughtFor, boolean isAcoustic, int numOfStrings) {
+        super(sound, boughtFor, isAcoustic);
         this.numOfStrings = numOfStrings;
-        this.isAcoustic = isAcoustic;
-        this.sound = sound;
-        this.sellFor = this.calcMarkUp();
-
-
+        this.instrumentType = InstrumentType.STRINGS;
     }
 
-    public InstrumentType getType() {
-        return this.instrumentType;
+    @Override
+    public double getSellFor() {
+        return super.getSellFor();
     }
 
     public String play() {
-        return this.sound;
+        return this.getSound();
     }
 
     public double calcMarkUp() {
-        return this.boughtFor * 1.5;
+        return getBoughtFor() * 1.5;
     }
 }
