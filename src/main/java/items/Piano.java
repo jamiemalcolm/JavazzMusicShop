@@ -10,4 +10,8 @@ public class Piano extends Instrument{
         Style = style;
         this.instrumentType = InstrumentType.KEYS;
     }
+
+    public InstrumentType getInstrumentType() {
+        return instrumentType;
+    }
 }

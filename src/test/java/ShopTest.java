@@ -95,4 +95,12 @@ public class ShopTest {
         shop.registerCustomer(customer);
         assertEquals(1, shop.getNumRegisteredCustomers());
     }
+
+    @Test
+    public void canSearchForItemByInstrumentType(){
+        ArrayList<ISell> foundItems = new ArrayList<ISell>();
+        foundItems.add(sheetMusic1);
+        foundItems.add(trumpet1);
+        assertEquals(foundItems, shop.searchItemsByInstrumentType(InstrumentType.BRASS));
+    }
 }

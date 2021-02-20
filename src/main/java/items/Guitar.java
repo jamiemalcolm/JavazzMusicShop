@@ -16,6 +16,7 @@ public class Guitar extends Instrument {
     }
 
 
-
-
+    public InstrumentType getInstrumentType() {
+        return instrumentType;
+    }
 }

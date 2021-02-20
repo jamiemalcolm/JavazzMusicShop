@@ -4,8 +4,8 @@ public class SheetMusic extends Item{
 
     private String title;
 
-    public SheetMusic(double boughtFor, InstrumentType forType, String title) {
-        super(boughtFor, forType);
+    public SheetMusic(double boughtFor, InstrumentType instrumentType, String title) {
+        super(boughtFor, instrumentType);
         this.title = title;
     }
 }

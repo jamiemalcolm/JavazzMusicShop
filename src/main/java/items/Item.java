@@ -6,12 +6,12 @@ import behaviour.ISell;
 public abstract class Item implements ISell {
     private double boughtFor;
     private double sellFor;
-    private InstrumentType forType;
+    private InstrumentType instrumentType;
 
-    public Item(double boughtFor, InstrumentType forType) {
+    public Item(double boughtFor, InstrumentType instrumentType) {
         this.boughtFor = boughtFor;
         this.sellFor = this.boughtFor * 1.5;
-        this.forType = forType;
+        this.instrumentType = instrumentType;
     }
 
     public double calcMarkUp() {
@@ -26,7 +26,8 @@ public abstract class Item implements ISell {
         return sellFor;
     }
 
-    public InstrumentType getForType() {
-        return forType;
+    public InstrumentType getInstrumentType() {
+        return instrumentType;
     }
+
 }

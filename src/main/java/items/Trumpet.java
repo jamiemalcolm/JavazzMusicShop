@@ -11,4 +11,8 @@ public class Trumpet extends Instrument{
         this.numberOfValves = numberOfValves;
         this.instrumentType = InstrumentType.BRASS;
     }
+
+    public InstrumentType getInstrumentType() {
+        return instrumentType;
+    }
 }

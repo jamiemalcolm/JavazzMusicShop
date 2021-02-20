@@ -1,6 +1,7 @@
 package shop;
 
 import behaviour.ISell;
+import items.InstrumentType;
 import people.Customer;
 
 import java.util.ArrayList;
@@ -98,5 +99,15 @@ public class Shop {
 
     public ArrayList<Customer> getRegisteredCustomers() {
         return registeredCustomers;
+    }
+
+    public ArrayList<ISell> searchItemsByInstrumentType(InstrumentType instrumentType) {
+        ArrayList<ISell> foundItems = new ArrayList<ISell>();
+        for(ISell item : this.stockList){
+            if(item.getInstrumentType() == instrumentType){
+                foundItems.add(item);
+            }
+        }
+        return foundItems;
     }
 }
