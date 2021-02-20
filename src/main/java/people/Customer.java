@@ -72,4 +72,10 @@ public class Customer {
         String totalString = String.valueOf(total);
         return "Your basket total is: £" + totalString;
     }
+
+    public void payForBasket() {
+        for(ISell item : basket){
+            buy(item);
+        }
+    }
 }
