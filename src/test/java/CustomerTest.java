@@ -83,8 +83,26 @@ public class CustomerTest {
     }
 
     @Test
+    public void customerCanGoToCheckout(){
+        customer.addToBasket(drumKit1);
+        customer.addToBasket(sheetMusic1);
+        assertEquals("Your basket total is: £303.75", customer.goToCheckout());
+    }
+
+    @Test
     public void customerCanBuyItem(){
         customer.buy(drumKit1);
         assertEquals(500, customer.getWallet(), 0.01);
+    }
+    @Test
+    public void customerCanPayForAllItemsInBasket(){
+        customer.addToBasket(drumKit1);
+        customer.addToBasket(sheetMusic1);
+        customer.payForBasket();
+        ArrayList<ISell> testCollection = new ArrayList<ISell>();
+        testCollection.add(drumKit1);
+        testCollection.add(sheetMusic1);
+        assertEquals(496.25, customer.getWallet(), 0.01);
+        assertEquals(testCollection, customer.getCollection());
     }
 }

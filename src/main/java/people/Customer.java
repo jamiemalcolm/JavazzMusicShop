@@ -58,4 +58,18 @@ public class Customer {
     public void addToBasket(ISell item) {
         this.basket.add(item);
     }
+
+    public double getBasketTotal(){
+        double total = 0;
+        for(ISell item : this.basket){
+            total += item.getSellFor();
+        }
+        return total;
+    }
+
+    public String goToCheckout() {
+        double total = getBasketTotal();
+        String totalString = String.valueOf(total);
+        return "Your basket total is: £" + totalString;
+    }
 }
