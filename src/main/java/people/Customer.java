@@ -52,5 +52,10 @@ public class Customer {
 
     public void buy(ISell item) {
         this.wallet -= item.getSellFor();
+        this.collection.add(item);
+    }
+
+    public void addToBasket(ISell item) {
+        this.basket.add(item);
     }
 }

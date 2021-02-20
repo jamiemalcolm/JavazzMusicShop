@@ -88,6 +88,11 @@ public class ShopTest {
     @Test
     public void checkMoneyInTill(){
         assertEquals(8721.5, shop.getTill(), 0.01);
+    }
 
+    @Test
+    public void shopCanRegisterCustomer(){
+        shop.registerCustomer(customer);
+        assertEquals(1, shop.getNumRegisteredCustomers());
     }
 }

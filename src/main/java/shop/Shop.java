@@ -91,4 +91,12 @@ public class Shop {
     public double getTill() {
         return this.till;
     }
+
+    public int getNumRegisteredCustomers() {
+        return this.registeredCustomers.size();
+    }
+
+    public ArrayList<Customer> getRegisteredCustomers() {
+        return registeredCustomers;
+    }
 }

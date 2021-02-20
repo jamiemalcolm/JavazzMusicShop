@@ -75,6 +75,14 @@ public class CustomerTest {
     }
 
     @Test
+    public void customerCanAddItemToBasket(){
+        customer.addToBasket(drumKit1);
+        ArrayList<ISell> basket = new ArrayList<ISell>();
+        basket.add(drumKit1);
+        assertEquals(basket, customer.getBasket());
+    }
+
+    @Test
     public void customerCanBuyItem(){
         customer.buy(drumKit1);
         assertEquals(500, customer.getWallet(), 0.01);
