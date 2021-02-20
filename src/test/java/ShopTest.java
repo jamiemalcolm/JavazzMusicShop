@@ -31,7 +31,7 @@ public class ShopTest {
     Customer customer;
 
     @Before
-    public void before(){
+    public void before() {
         drumKit1 = new DrumKit("boom boom ba boom claaang", 200.00, true, 4, 3);
         drumKit2 = new DrumKit("boom boom ba boom claaang", 300.00, true, 6, 3);
         drumSticks1 = new DrumSticks(7.50, InstrumentType.PERCUSSION, "A6");
@@ -40,8 +40,8 @@ public class ShopTest {
         drumSticks4 = new DrumSticks(9.50, InstrumentType.PERCUSSION, "D9");
         sheetMusic1 = new SheetMusic(2.50, InstrumentType.BRASS, "Yankee Doodle");
         sheetMusic2 = new SheetMusic(2.50, InstrumentType.KEYS, "Beathoven's 4th");
-        guitar1 =  new Guitar("Strum de dum",125.00, true, 6 );
-        guitar2 = new Guitar("waaa whaaaa waaa",225.00, false, 6);
+        guitar1 = new Guitar("Strum de dum", 125.00, true, 6);
+        guitar2 = new Guitar("waaa whaaaa waaa", 225.00, false, 6);
         guitar3 = new Guitar("dum dum doom dum doom", 175.00, false, 4);
         piano1 = new Piano("tinkle tiii tinkle toooe", 600, true, "Upright");
         piano2 = new Piano("tinkle tiii tinkle toooe de taaa", 400, false, "Electric Upright");
@@ -65,42 +65,71 @@ public class ShopTest {
     }
 
     @Test
-    public void shopHasStockList(){
+    public void shopHasStockList() {
         assertEquals(10, shop.getStockListLength());
     }
 
     @Test
-    public void shopHasProfitMap(){
+    public void shopHasProfitMap() {
         assertEquals(10, shop.getProfitListLength());
     }
 
     @Test
-    public void shopCanCalculateProfitPotential(){
-        assertEquals(639.25 ,shop.getTotalPotentialProfit(), 0.01);
+    public void shopCanCalculateProfitPotential() {
+        assertEquals(639.25, shop.getTotalPotentialProfit(), 0.01);
     }
 
     @Test
-    public void shopCanCalcProfitAfterAddedItem(){
+    public void shopCanCalcProfitAfterAddedItem() {
         shop.addStock(drumKit2);
         assertEquals(789.25, shop.getTotalPotentialProfit(), 0.01);
     }
 
     @Test
-    public void checkMoneyInTill(){
+    public void checkMoneyInTill() {
         assertEquals(8721.5, shop.getTill(), 0.01);
     }
 
     @Test
-    public void shopCanRegisterCustomer(){
+    public void shopCanRegisterCustomer() {
         shop.registerCustomer(customer);
         assertEquals(1, shop.getNumRegisteredCustomers());
     }
 
     @Test
-    public void canSearchForItemByInstrumentType(){
+    public void canSearchForItemByInstrumentType() {
         ArrayList<ISell> foundItems = new ArrayList<ISell>();
         foundItems.add(sheetMusic1);
         foundItems.add(trumpet1);
         assertEquals(foundItems, shop.searchItemsByInstrumentType(InstrumentType.BRASS));
+    }
+
+    @Test
+    public void canSearchForItemsThatCostLessThanAgivenAmount() {
+        ArrayList<ISell> foundItems = new ArrayList<ISell>();
+        foundItems.add(drumSticks1);
+        foundItems.add(drumSticks2);
+        foundItems.add(drumSticks3);
+        foundItems.add(sheetMusic1);
+        foundItems.add(sheetMusic2);
+        foundItems.add(trumpet1);
+        assertEquals(foundItems, shop.showItemsForPriceOrLess(150.00));
+    }
+
+    @Test
+    public void canSortStockListByPriceAscending(){
+        ArrayList<ISell> foundItems = new ArrayList<ISell>();
+        foundItems.add(sheetMusic1);
+        foundItems.add(sheetMusic2);
+        foundItems.add(drumSticks1);
+        foundItems.add(drumSticks2);
+        foundItems.add(drumSticks3);
+        foundItems.add(trumpet1);
+        foundItems.add(guitar1);
+        foundItems.add(drumKit1);
+        foundItems.add(guitar2);
+        foundItems.add(piano1);
+        assertEquals(foundItems, shop.sortItemsAscendingPrice());
+
     }
 }

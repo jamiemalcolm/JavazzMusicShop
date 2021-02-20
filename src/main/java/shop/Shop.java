@@ -5,8 +5,10 @@ import items.InstrumentType;
 import people.Customer;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Shop {
     private String shopName;
@@ -109,5 +111,22 @@ public class Shop {
             }
         }
         return foundItems;
+    }
+
+    public ArrayList<ISell> showItemsForPriceOrLess(double price) {
+        ArrayList<ISell> foundItems = new ArrayList<ISell>();
+        for(ISell item : this.stockList){
+            if(item.getSellFor() <= price){
+                foundItems.add(item);
+            }
+        }
+        return foundItems;
+    }
+
+    public ArrayList<ISell> sortItemsAscendingPrice() {
+        ArrayList<ISell> sortedAscending = this.stockList.stream()
+                .sorted(Comparator.comparingDouble(ISell::getSellFor))
+                .collect(Collectors.toList());
+        return sortedAscending;
     }
 }
